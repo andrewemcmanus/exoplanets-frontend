@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import rd3 from 'react-d3-library';
 
 ReactDOM.render(
   <Router>

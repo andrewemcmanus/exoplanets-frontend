@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import About from './components/About';
+import node from 'd3file';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('jwtToken');
@@ -62,8 +63,8 @@ function App() {
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={ Signup } />
-          <Route 
-            path='/login' 
+          <Route
+            path='/login'
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
           <Route path='/about' component={ About } />
           <PrivateRoute path="/profile" component={ Profile } user={currentUser} handleLogout={handleLogout} />
