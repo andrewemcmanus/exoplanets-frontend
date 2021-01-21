@@ -4871,12 +4871,12 @@
     "d3-quadtree" "1 - 2"
     "d3-timer" "1 - 2"
 
-"d3-quadtree@1 - 2":
+"d3-quadtree@^2.0.0", "d3-quadtree@1 - 2":
   "integrity" "sha512-b0Ed2t1UUalJpc3qXzKi+cPGxeXRr4KU9YSlocN74aTzp6R/Ud43t79yLLqxHRWZfsvWXmbDWPpoENK1K539xw=="
   "resolved" "https://registry.npmjs.org/d3-quadtree/-/d3-quadtree-2.0.0.tgz"
   "version" "2.0.0"
 
-"d3-timer@1 - 2":
+"d3-timer@^2.0.0", "d3-timer@1 - 2":
   "integrity" "sha512-TO4VLh0/420Y/9dO3+f9abDEFYeCUr2WZRlxJvbp4HPTQcSylXNiL6yZa9FIUvV1yRiFufl1bszTCLDqv9PWNA=="
   "resolved" "https://registry.npmjs.org/d3-timer/-/d3-timer-2.0.0.tgz"
   "version" "2.0.0"
