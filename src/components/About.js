@@ -5,9 +5,9 @@ const About = () => {
         <div>
             <h1>About</h1>
             <p>This is about us...</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Tempore dolorum excepturi, pariatur dolore fuga perferendis 
-                mollitia deserunt a voluptas assumenda! Consequatur beatae qui 
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Tempore dolorum excepturi, pariatur dolore fuga perferendis
+                mollitia deserunt a voluptas assumenda! Consequatur beatae qui
                 dolorem tempora possimus accusantium, fugit eius quidem?
             </p>
         </div>
@@ -15,3 +15,9 @@ const About = () => {
 }
 
 export default About;
+
+// componentDidMount
+// fetch GET request from Visual
+// Postman: should list all the available systems by name!
+// put systems in STATE
+// dropdown menu component reflects the state
