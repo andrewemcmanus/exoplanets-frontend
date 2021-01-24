@@ -19,5 +19,6 @@ export default About;
 // componentDidMount
 // fetch GET request from Visual
 // Postman: should list all the available systems by name!
+// SELECT system_name FROM main_app_visual;
 // put systems in STATE
 // dropdown menu component reflects the state
