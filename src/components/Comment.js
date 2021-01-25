@@ -96,6 +96,7 @@ let commentOrder;
             const commentList = commentMap.map((b, index)=>{
                 // let count = 0
                 // p vs. b
+                // MAP BY SYSTEM NAME:
 
                 if(b.songsterr_id === props.songId){
                     // count = count + 1
@@ -106,7 +107,7 @@ let commentOrder;
                         date: b.date,
                         id: b._id,
                         email: b.email,
-                        image: p.image_url,
+                        // image: p.image_url,
                     })
 
                     return <div>

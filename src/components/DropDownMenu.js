@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+// POPULATE <ul></ul> below with a random assortment of the systems in the database:
 const DropDownMenu = () => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);

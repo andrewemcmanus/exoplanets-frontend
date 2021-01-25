@@ -34,8 +34,8 @@ const Signup = () => {
 
         if (password === confirmPassword && password.length >= 8) {
             const newUser = { name, email, password };
-            
-            axios.post(`${REACT_APP_SERVER_URL}/api/users/register`, newUser)
+            // CHANGE FOR BACK END (e.g. signup)
+            axios.post(`${REACT_APP_SERVER_URL}/signup`, newUser)
             .then(response => {
                 console.log(response);
                 setRedirect(true);

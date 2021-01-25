@@ -6,6 +6,7 @@ function StreamgraphTransitions() {
   const ref = useRef();
 
   useEffect(() => {
+    console.log(notebook);
     (new Runtime).module(notebook, Inspector.into(ref.current.querySelector(".cells")));
   }, []);
 
