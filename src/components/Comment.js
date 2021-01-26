@@ -17,18 +17,17 @@ function Comment (props){
         //  console.log(props.songId)
         //  console.log(props.email)
         //  console.log( moment(Date.now()).format())
-        const userData = {
-            email: props.email,
-            tab_id:  props.songId,
+        const NotesData = {
+            username: props.email,
+            system_name:  props.system_name,
             content: commentsStore,
-            time: Date.now(),
+            // time: Date.now(),
         }
         // prevents saving empty comment
         if(commentsStore === "") {
             return
         }
-
-        await Axios.post(`${REACT_APP_SERVER_URL}/api/users/tabs/comments`, userData)
+        await Axios.post(`${REACT_APP_SERVER_URL}/comments`, userData)
         .then(res=>{
             // console.log(res);
             getComments();
@@ -39,10 +38,10 @@ function Comment (props){
 
     }
 
-    async function getComments  () {
+    async function getComments() {
         console.log('get comments')
         // CHANGE URL:
-        let url = await `${REACT_APP_SERVER_URL}/api/users/tabs/${props.songId}`
+        let url = await `${REACT_APP_SERVER_URL}/systems/${props.system_name}`
         // console.log(`${REACT_APP_SERVER_URL}/api/users/tabs/${props.songId}`)
          await Axios.get(url).then(
             async (res)=>{
@@ -75,7 +74,7 @@ function Comment (props){
             email: props.email
         }
         // UPDATE URL:
-        await Axios.put(`${REACT_APP_SERVER_URL}/api/users/profile/comments/delete`, userData)
+        await Axios.put(`${REACT_APP_SERVER_URL}/comments/delete`, userData)
         .then( res=>{
         //   console.log(res);
         getComments()})

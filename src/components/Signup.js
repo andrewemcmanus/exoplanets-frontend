@@ -56,7 +56,7 @@ const Signup = () => {
                     <h2 className="py-2">Signup</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name">Username</label>
                             <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
                         </div>
                         <div className="form-group">
