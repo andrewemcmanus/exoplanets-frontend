@@ -1,7 +1,7 @@
 import constant from "./constant.js";
 
 export default function(x) {
-  var strength = constant(0.1),
+  var strength = constant(0.2),
       nodes,
       strengths,
       xz;

@@ -13,6 +13,7 @@ const SystemNames = () => {
   useEffect(()=>{
       getSystems()
   },[])
+  
   let names = getSystems().map;
   return (
     <h6>{names}</h6>

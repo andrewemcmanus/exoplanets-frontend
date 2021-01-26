@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import rd3 from 'react-d3-library';
+import Axios from 'axios';
 // import node from 'd3file';
 // CSS
 import './App.css';
@@ -31,6 +32,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
+    // Axios.get('http://localhost:8000/systems').then(console.log)
+
     let token;
     // if there is no token in localStorage, then the user is in authenticated
     if (!localStorage.getItem('jwtToken')) {
