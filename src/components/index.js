@@ -6,3 +6,7 @@ export {default as forceRadial} from "./radial.js";
 export {default as forceSimulation} from "./simulation.js";
 export {default as forceX} from "./x.js";
 export {default as forceY} from "./y.js";
+import "./selection/index.js";
+export {default as transition} from "./transition/index.js";
+export {default as active} from "./active.js";
+export {default as interrupt} from "./interrupt.js";

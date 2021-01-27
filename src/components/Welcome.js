@@ -1,7 +1,6 @@
 import React from 'react';
 import rd3 from 'react-d3-library';
 // import simulation from './simulation.js';
-import DropDownMenu from './DropDownMenu.js'
 // import Comment from './Comment.js'
 import SystemNames from './SystemNames'
 // import ForceDirectedGraphCanvas from './ForceDirectedGraphCanvas'

@@ -61,14 +61,14 @@ function Comment (props){
         getComments()
     },[])
 
-    useEffect(()=>{
-        getComments()
-    },[props.myTabs])
+    // useEffect(()=>{
+    //     getComments()
+    // },[props.myTabs])
 
 // function leaveComment () {
     async function deleteComment(e){
       e.preventDefault()
-    //   console.log(e.target.value)
+    //   use email for referencing user instead?
         const userData = {
             _id: e.target.value,
             email: props.email
@@ -101,7 +101,7 @@ let commentOrder;
                     // count = count + 1
                     let img
                     commentArrayAll.push({
-                        userName: p.name,
+                        username: p.name,
                         content: b.content,
                         date: b.date,
                         id: b._id,
