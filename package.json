@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@d3/force-directed-graph-canvas": "https://api.observablehq.com/@d3/force-directed-graph-canvas.tgz?v=3",
+    "@d3/force-directed-lattice": "https://api.observablehq.com/@d3/force-directed-lattice.tgz?v=3",
     "@d3/streamgraph-transitions": "https://api.observablehq.com/@d3/streamgraph-transitions.tgz?v=3",
     "@observablehq/runtime": "4",
     "@testing-library/jest-dom": "^5.11.4",
