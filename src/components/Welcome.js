@@ -4,7 +4,7 @@ import rd3 from 'react-d3-library';
 // import Comment from './Comment.js'
 import SystemNames from './SystemNames'
 // import ForceDirectedGraphCanvas from './ForceDirectedGraphCanvas'
-// import StreamgraphTransitions from './StreamgraphTransitions'
+import StreamgraphTransitions from './StreamgraphTransitions'
 // import node from 'd3file'; <Comment />
 
 
@@ -12,7 +12,8 @@ import SystemNames from './SystemNames'
 const Welcome = () => {
     return (
         <div>
-            <h1>Welcome</h1>
+            <StreamgraphTransitions />
+            <h1>Visualize Exoplanetary Systems in D3!</h1>
             <SystemNames />
 
         </div>
