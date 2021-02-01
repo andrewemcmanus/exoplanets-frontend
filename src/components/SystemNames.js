@@ -5,14 +5,14 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const SystemNames = () => {
   const dropdownRef = useRef(null);
   const [ systems, setSystems ] = useState([])
-  const [isActive, setIsActive] = useState(false);
+  const [ isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
 
   async function getSystems() {
     let url = `${REACT_APP_SERVER_URL}/api/visuals`;
     // console.log(url);
     await Axios.get(url).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setSystems(res.data);
     })
   }

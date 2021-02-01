@@ -13,10 +13,6 @@ function Comment (props){
         // console.log("Please Log In To Save Tabs")
         alert('Must Be Logged In to Submit')
     }
-        //  console.log(commentsStore)
-        //  console.log(props.songId)
-        //  console.log(props.email)
-        //  console.log( moment(Date.now()).format())
         const NotesData = {
             username: props.email,
             system_name:  props.system_name,
@@ -27,7 +23,7 @@ function Comment (props){
         if(commentsStore === "") {
             return
         }
-        await Axios.post(`${REACT_APP_SERVER_URL}/comments`, userData)
+        await Axios.post(`${REACT_APP_SERVER_URL}/api/notes`, userData)
         .then(res=>{
             // console.log(res);
             getComments();
@@ -41,7 +37,7 @@ function Comment (props){
     async function getComments() {
         console.log('get comments')
         // CHANGE URL:
-        let url = await `${REACT_APP_SERVER_URL}/systems/${props.system_name}`
+        let url = await `${REACT_APP_SERVER_URL}/api/notes/${props.system_name}`
         // console.log(`${REACT_APP_SERVER_URL}/api/users/tabs/${props.songId}`)
          await Axios.get(url).then(
             async (res)=>{
@@ -50,7 +46,7 @@ function Comment (props){
                     // console.log(res.data)
                     // console.log(url)
                     await setComments(res.data.user)
-            }else{
+            } else {
                 const placeHolder = [{content : "leave comment"}]
                 await setComments(placeHolder)
                 // console.log("33333" + placeHolder)
@@ -61,9 +57,6 @@ function Comment (props){
         getComments()
     },[])
 
-    // useEffect(()=>{
-    //     getComments()
-    // },[props.myTabs])
 
 // function leaveComment () {
     async function deleteComment(e){
@@ -74,7 +67,7 @@ function Comment (props){
             email: props.email
         }
         // UPDATE URL:
-        await Axios.put(`${REACT_APP_SERVER_URL}/comments/delete`, userData)
+        await Axios.put(`${REACT_APP_SERVER_URL}/api/notes/delete`, userData)
         .then( res=>{
         //   console.log(res);
         getComments()})
@@ -169,8 +162,8 @@ let commentOrder;
 
             {/* clears input field, prevents refresh, prevents previous comment from being submitted again onClick */}
         <form onSubmit={e=>{e.target.reset(); e.preventDefault(); setCommentsStore('')}}>
-          <input id="inputComment" type="text" placeholder="Leave a Comment" onChange={(e=>{setCommentsStore(e.target.value)})}></input>
-          <button id="comment" onClick={saveComment}>Comment</button>
+          <input id="inputComment" type="text" placeholder="Tell us about this system" onChange={(e=>{setCommentsStore(e.target.value)})}></input>
+          <button id="comment" onClick={saveComment}>Submit</button>
         </form>
         </div>
     )

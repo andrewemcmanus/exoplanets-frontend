@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import rd3 from 'react-d3-library';
-import Axios from 'axios';
+// import rd3 from 'react-d3-library';
+// import Axios from 'axios';
 // import node from 'd3file';
 // CSS
 import './App.css';
