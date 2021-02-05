@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
+// import $ from 'jquery';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import rd3 from 'react-d3-library';
+// import rd3 from 'react-d3-library';
 // import node from 'd3file';
 
 ReactDOM.render(

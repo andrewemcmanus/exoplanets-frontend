@@ -1,20 +1,27 @@
 // Imports
 import React, { useState } from 'react';
+// import $ from 'jquery';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import CSRFToken from './csrftoken';
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 // import keys from '../utils/credentials';
 // const { REACT_APP_SERVER_URL } = keys;
 
+
 const Signup = () => {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-    const handleName = (e) => {
-        setName(e.target.value);
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
     }
 
     const handleEmail = (e) => {
@@ -29,24 +36,29 @@ const Signup = () => {
         setConfirmPassword(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(CSRFToken)
         if (password === confirmPassword && password.length >= 8) {
-            const newUser = { name, email, password };
-            // CHANGE FOR BACK END (e.g. signup)
-            axios.post(`${REACT_APP_SERVER_URL}/signup`, newUser)
+            const newUser = { username, email, password };
+            await axios.post(`${REACT_APP_SERVER_URL}/signup/`,
+              newUser,
+              { headers: { 'X-CSRFToken': CSRFToken }})
             .then(response => {
-                console.log(response);
                 setRedirect(true);
             })
             .catch(error => {
+                // console.log(newUser);
                 console.log(error);
             })
         } else {
-            alert('Password needs to be at least 8 characters or more. Please try again.');
-        }
-    }
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.')
+            } else {
+                alert('Password must be at least 8 characters')
+            }
+          }
+        };
 
     if (redirect) return <Redirect to='/login' />
     return (
@@ -57,7 +69,7 @@ const Signup = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Username</label>
-                            <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
+                            <input type="text" name="username" value={username} onChange={handleUsername} className="form-control" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
