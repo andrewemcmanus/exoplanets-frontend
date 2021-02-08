@@ -1,17 +1,30 @@
 // Imports
 import React, { useState } from 'react';
-// import $ from 'jquery';
+import $ from 'jquery';
 import axios from 'axios';
+// import { BrowserRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import CSRFToken from './csrftoken';
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
-// import keys from '../utils/credentials';
-// const { REACT_APP_SERVER_URL } = keys;
-
+function getCookie(name) {
+    const jQuery = require('jquery');
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -19,7 +32,13 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-
+    const csrftoken = getCookie('csrftoken');
+    // console.log(csrftoken);
+    const CSRFToken = () => {
+        return (
+            <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+        );
+    };
     const handleUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -36,15 +55,17 @@ const Signup = () => {
         setConfirmPassword(e.target.value);
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(CSRFToken)
+        // console.log(CSRFToken);
         if (password === confirmPassword && password.length >= 8) {
             const newUser = { username, email, password };
-            await axios.post(`${REACT_APP_SERVER_URL}/signup/`,
+            // console.log(newUser);
+            axios.post(`${REACT_APP_SERVER_URL}/signup/`,
               newUser,
               { headers: { 'X-CSRFToken': CSRFToken }})
             .then(response => {
+              // console.log(response);
                 setRedirect(true);
             })
             .catch(error => {
