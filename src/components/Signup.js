@@ -5,6 +5,7 @@ import axios from 'axios';
 // import { BrowserRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -26,19 +27,19 @@ function getCookie(name) {
     return cookieValue;
 }
 
+
 const Signup = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-    const csrftoken = getCookie('csrftoken');
-    // console.log(csrftoken);
-    const CSRFToken = () => {
-        return (
-            <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
-        );
-    };
+    // const CSRFToken = () => {
+    //     return (
+    //         <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+    //     );
+    // };
+
     const handleUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -57,15 +58,17 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(CSRFToken);
+        const csrftoken = getCookie('csrftoken');
+        const headers = new Headers();
+        headers.append('X-CSRFToken', csrftoken);
+        // const token = CSRFToken();
+        // console.log(csrftoken);
         if (password === confirmPassword && password.length >= 8) {
             const newUser = { username, email, password };
             // console.log(newUser);
-            axios.post(`${REACT_APP_SERVER_URL}/signup/`,
-              newUser,
-              { headers: { 'X-CSRFToken': CSRFToken }})
-            .then(response => {
-              // console.log(response);
+            axios.post(`${REACT_APP_SERVER_URL}/api/user/`, newUser, { headers: headers }
+            ).then(response => {
+              console.log(response);
                 setRedirect(true);
             })
             .catch(error => {
