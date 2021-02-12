@@ -7,6 +7,25 @@ import { Redirect } from 'react-router-dom';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 // import keys from '../utils/credentials';
 // const { REACT_APP_SERVER_URL } = keys;
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
+function getCookie(name) {
+    const jQuery = require('jquery');
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 
 const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -23,8 +42,11 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const userData = { email, password };
+        const csrftoken = getCookie('csrftoken');
+        const headers = new Headers();
+        headers.append('X-CSRFToken', csrftoken);
 
-        axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
+        axios.post(`${REACT_APP_SERVER_URL}/api/login/`, userData, { headers: headers })
         .then(response => {
             const { token } = response.data;
             // Save token to localStorage
