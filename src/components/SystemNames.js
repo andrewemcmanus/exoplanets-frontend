@@ -31,7 +31,7 @@ const SystemNames = () => {
       window.removeEventListener('click', pageClickEvent)
     }
   }, [isActive])
-//  turn <p> into link? <a> or <NavLink>?
+//  turn <p> into link? <a> or <NavLink>? Route to new component with that data!
   let names = systems.map((systemItem, idx) => {
     return(
         <div key={idx}>

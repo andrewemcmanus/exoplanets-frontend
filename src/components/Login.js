@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import { Redirect } from 'react-router-dom';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 // import keys from '../utils/credentials';
 // const { REACT_APP_SERVER_URL } = keys;
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -30,6 +31,7 @@ function getCookie(name) {
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState(false);
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -45,18 +47,11 @@ const Login = (props) => {
         const csrftoken = getCookie('csrftoken');
         const headers = new Headers();
         headers.append('X-CSRFToken', csrftoken);
-
+        console.log(headers);
         axios.post(`${REACT_APP_SERVER_URL}/api/login/`, userData, { headers: headers })
         .then(response => {
-            const { token } = response.data;
-            // Save token to localStorage
-            localStorage.setItem('jwtToken', token);
-            // Set token to auth header
-            setAuthToken(token);
-            // Decode token to get the user data
-            const decoded = jwt_decode(token);
-            // Set current user
-            props.nowCurrentUser(decoded);
+            console.log(response);
+            // setRedirect(true);
         })
         .catch(error =>{
             console.log(error);
