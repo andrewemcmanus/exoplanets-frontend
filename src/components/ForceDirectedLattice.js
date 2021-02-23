@@ -53,7 +53,7 @@ function ForceDirectedLattice() {
   const ref = useRef();
 
   useEffect(() => {
-    console.log(nodes);
+    console.log(nodes.links);
     (new Runtime).module(notebook, name => {
       if (name === "d3") return Inspector.into(ref.current.querySelector(".d3"))();
       return ["chart","drag"].includes(name);
