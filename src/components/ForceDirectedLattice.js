@@ -4,6 +4,7 @@ import {Runtime, Inspector} from "@observablehq/runtime";
 // const RD3Component = rd3.Component;
 import notebook from "@d3/force-directed-lattice";
 import nodes from './data/nodes.json';
+import D3v4min from './d3v4min';
 
 // chart = {
 //   replay;
@@ -63,6 +64,7 @@ function ForceDirectedLattice() {
   return (
     <div className="ForceDirectedLattice" ref={ref}>
       <div className="d3"></div>
+      <D3v4min />
       <p>Credit: <a href="https://observablehq.com/@d3/force-directed-lattice">Force-Directed Lattice by D3</a></p>
     </div>
   );
