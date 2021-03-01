@@ -4,7 +4,8 @@ import {Runtime, Inspector} from "@observablehq/runtime";
 // const RD3Component = rd3.Component;
 import notebook from "@d3/force-directed-lattice";
 import nodes from './data/nodes.json';
-import D3v4min from './d3v4min';
+// import D3v4min from './d3v4min';
+import ScriptTag from 'react-script-tag';
 
 // chart = {
 //   replay;
@@ -49,6 +50,9 @@ import D3v4min from './d3v4min';
 //     .node();
 // }
 
+const Script = props => (
+  <ScriptTag type="text/javascript" src="https://d3js.org/d3.v4.min.js" />
+)
 
 function ForceDirectedLattice() {
   const ref = useRef();
