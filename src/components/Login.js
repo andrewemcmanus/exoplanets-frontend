@@ -51,7 +51,7 @@ const Login = (props) => {
         axios.post(`${REACT_APP_SERVER_URL}/api/login/`, userData, { headers: headers })
         .then(response => {
             console.log(response);
-            // setRedirect(true);
+            setRedirect(true);
         })
         .catch(error =>{
             console.log(error);

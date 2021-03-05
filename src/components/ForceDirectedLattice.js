@@ -50,14 +50,13 @@ import ScriptTag from 'react-script-tag';
 //     .node();
 // }
 
-const Script = props => (
-  <ScriptTag type="text/javascript" src="https://d3js.org/d3.v4.min.js" />
-)
-
 function ForceDirectedLattice() {
   const ref = useRef();
 
   useEffect(() => {
+    const Script = props => (
+      <ScriptTag type="text/javascript" src="https://d3js.org/d3.v4.min.js" />
+    )
     console.log(nodes.links);
     (new Runtime).module(notebook, name => {
       if (name === "d3") return Inspector.into(ref.current.querySelector(".d3"))();
@@ -68,7 +67,6 @@ function ForceDirectedLattice() {
   return (
     <div className="ForceDirectedLattice" ref={ref}>
       <div className="d3"></div>
-      <D3v4min />
       <p>Credit: <a href="https://observablehq.com/@d3/force-directed-lattice">Force-Directed Lattice by D3</a></p>
     </div>
   );
