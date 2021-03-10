@@ -1,7 +1,6 @@
 import React, {useRef, useEffect} from "react";
 import {Runtime, Inspector} from "@observablehq/runtime";
 // import rd3 from 'd3file';
-// const RD3Component = rd3.Component;
 import * as d3 from 'd3';
 import notebook from "@d3/force-directed-lattice";
 import nodes from './data/nodes.json';
