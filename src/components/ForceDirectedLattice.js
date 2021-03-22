@@ -7,7 +7,7 @@ import nodes from './data/nodes.json';
 // import D3v4min from './d3v4min';
 import ScriptTag from 'react-script-tag';
 
-// merge Chart and ForceDirectedLattice
+// ****merge Chart and ForceDirectedLattice*** ?
 // see Embed code at https://observablehq.com/@d3/force-directed-lattice?collection=@d3/d3-force
 
 const chart = () => {
@@ -53,20 +53,51 @@ const chart = () => {
     .node();
 }
 
+// function ForceDirectedLattice() {
+//   const chartRef = useRef();
+//   const dataRef = useRef();
+//
+//   useEffect(() => {
+//     const runtime = new Runtime();
+//     runtime.module(notebook, name => {
+//       if (name === "chart") return new Inspector(chartRef.current);
+//       if (name === "data") return new Inspector(dataRef.current);
+//     });
+//     return () => runtime.dispose();
+//   }, []);
+//
+//   return (
+//     <>
+//       <div ref={chartRef} />
+//       <div ref={dataRef} />
+//       <p>Credit: <a href="https://observablehq.com/@d3/force-directed-lattice">Force-Directed Lattice by D3</a></p>
+//     </>
+//   );
+// }
+//
+// export default ForceDirectedLattice;
+
 function ForceDirectedLattice() {
+  const chartRef = useRef();
+  const dataRef = useRef();
   const ref = useRef();
 
   useEffect(() => {
     // console.log(props);
+    // is this the right place to inherit the Script tag?
     const Script = props => (
       <ScriptTag type="text/javascript" src="https://d3js.org/d3.v4.min.js" />
     )
     // console.log(nodes.links);
-    // "data" returning undefined above, but nodes.links (mapped from "data") is...
-    (new Runtime).module(notebook, name => {
+    // "data" returning undefined above, but nodes.links (mapped from "data"?) is...
+    const runtime = new Runtime();
+    runtime.module(notebook, name => {
+      if (name === "chart") return new Inspector(chartRef.current);
+      if (name === "data") return new Inspector(dataRef.current);
       if (name === "d3") return Inspector.into(ref.current.querySelector(".d3"))();
-      return ["chart","drag"].includes(name);
+      return ["chart"].includes(name);
     });
+    return () => runtime.dispose()
   }, []);
 
   return (

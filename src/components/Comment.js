@@ -39,7 +39,8 @@ function Comment (props){
         // CHANGE URL:
         let url = await `${REACT_APP_SERVER_URL}/api/notes/${props.system_name}`
         // console.log(`${REACT_APP_SERVER_URL}/api/users/tabs/${props.songId}`)
-         await Axios.get(url).then(
+        // combination of async/await and .then??
+        Axios.get(url).then(
             async (res)=>{
                 if(res!== undefined){
                     // console.log('Look below')

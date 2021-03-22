@@ -35,7 +35,7 @@ function App() {
     // Axios.get('http://localhost:8000/systems').then(console.log)
 
     let token;
-    // if there is no token in localStorage, then the user is in authenticated
+    // if there is no token in localStorage, then the user isn't authenticated
     if (!localStorage.getItem('jwtToken')) {
       console.log('is Authenticated: >>> false');
       setIsAuthenticated(false);
