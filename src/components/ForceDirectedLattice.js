@@ -103,6 +103,7 @@ function ForceDirectedLattice() {
   return (
     <div className="ForceDirectedLattice" ref={ref}>
       <div className="d3"></div>
+      <div ref={chartRef} />
       <p>Credit: <a href="https://observablehq.com/@d3/force-directed-lattice">Force-Directed Lattice by D3</a></p>
     </div>
   );
