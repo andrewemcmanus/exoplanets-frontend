@@ -8,7 +8,7 @@ function StreamgraphTransitions() {
     console.log(notebook);
     (new Runtime).module(notebook, Inspector.into(ref.current.querySelector(".cells")));
   }, []);
-
+// replacing the notebook in useEffect with controllable parameters
   return (
     <div className="StreamgraphTransitions" ref={ref}>
       <div className="cells"></div>

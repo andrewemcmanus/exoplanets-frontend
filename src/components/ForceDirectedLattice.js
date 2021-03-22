@@ -11,7 +11,7 @@ import ScriptTag from 'react-script-tag';
 // see Embed code at https://observablehq.com/@d3/force-directed-lattice?collection=@d3/d3-force
 
 const chart = () => {
-  replay;
+  // replay;
   const links = data.links.map(d => Object.create(d));
   const nodes = data.nodes.map(d => Object.create(d));
 
@@ -30,6 +30,7 @@ const chart = () => {
     context.translate(width / 2, height / 2);
     context.beginPath();
     for (const d of links) {
+      console.log(d.source.x);
       context.moveTo(d.source.x, d.source.y);
       context.lineTo(d.target.x, d.target.y);
     }
@@ -56,11 +57,12 @@ function ForceDirectedLattice() {
   const ref = useRef();
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
     const Script = props => (
       <ScriptTag type="text/javascript" src="https://d3js.org/d3.v4.min.js" />
     )
-    console.log(nodes.links);
+    // console.log(nodes.links);
+    // "data" returning undefined above, but nodes.links (mapped from "data") is...
     (new Runtime).module(notebook, name => {
       if (name === "d3") return Inspector.into(ref.current.querySelector(".d3"))();
       return ["chart","drag"].includes(name);
