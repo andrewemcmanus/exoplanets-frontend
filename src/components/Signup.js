@@ -5,7 +5,6 @@ import axios from 'axios';
 // import { BrowserRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
-
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -68,7 +67,7 @@ const Signup = () => {
             // console.log(newUser);
             axios.post(`${REACT_APP_SERVER_URL}/api/user/`, newUser, { headers: headers }
             ).then(response => {
-              console.log(response);
+              // console.log(response);
                 setRedirect(true);
             })
             .catch(error => {
