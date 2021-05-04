@@ -4,7 +4,7 @@ import {Runtime, Inspector} from "@observablehq/runtime";
 import * as d3 from 'd3';
 import notebook from "@d3/force-directed-lattice";
 import nodes from './data/nodes.json';
-import D3v4min from './d3v4min';
+// import D3v4min from './d3v4min';
 import ScriptTag from 'react-script-tag';
 
 // ****merge Chart and ForceDirectedLattice*** ?
@@ -12,15 +12,16 @@ import ScriptTag from 'react-script-tag';
 
 const chart = () => {
   // replay;
-  const links = data.links.map(d => Object.create(d));
-  const nodes = data.nodes.map(d => Object.create(d));
+  const links = links.map(d => Object.create(d));
+  const nodes = nodes.map(d => Object.create(d));
+  console.log(links);
 
   const simulation = d3.forceSimulation(nodes)
       .force("charge", d3.forceManyBody().strength(-30))
       .force("link", d3.forceLink(links).strength(1).distance(20).iterations(10))
       .on("tick", ticked);
 
-  invalidation.then(() => simulation.stop());
+  // invalidation.then(() => simulation.stop());
 
   const context = DOM.context2d(width, height);
 

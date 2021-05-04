@@ -4,7 +4,7 @@ import React from 'react';
 import SystemNames from './SystemNames'
 // import ForceDirectedGraphCanvas from './ForceDirectedGraphCanvas'
 import StreamgraphTransitions from './StreamgraphTransitions'
-// import ForceDirectedLattice from './ForceDirectedLattice'
+import ForceDirectedLattice from './ForceDirectedLattice'
 import NewComponent from './NewComponent'
 
 const Welcome = () => {
@@ -14,6 +14,7 @@ const Welcome = () => {
             <h3>Select from over 70 different systems below.</h3>
             <h3>Visualizations like this will be used to model temperature differences between planets and the host star:</h3>
             <SystemNames />
+            <ForceDirectedLattice />
         </div>
 
     )
