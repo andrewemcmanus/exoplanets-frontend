@@ -1,10 +1,10 @@
 import React, {useRef, useEffect} from "react";
 import {Runtime, Inspector} from "@observablehq/runtime";
-// import rd3 from 'd3file';
+import rd3 from 'd3file';
 import * as d3 from 'd3';
 import notebook from "@d3/force-directed-lattice";
 import nodes from './data/nodes.json';
-// import D3v4min from './d3v4min';
+import D3v4min from './d3v4min';
 import ScriptTag from 'react-script-tag';
 
 // ****merge Chart and ForceDirectedLattice*** ?
